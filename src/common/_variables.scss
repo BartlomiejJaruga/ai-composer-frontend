@@ -1,0 +1,80 @@
+@use "sass:color";
+
+
+
+// ========== FONTS ==========
+
+$font-headings: (
+  font-family: ('Space Grotesk', sans-serif),
+  font-weight: 400
+);
+
+$font-general: (
+  font-family: ('Raleway', sans-serif),
+  font-weight: 300
+);
+
+@mixin apply-font($font-map) {
+  @each $prop, $value in $font-map {
+    #{$prop}: #{$value};
+  }
+}
+
+
+
+
+// ========== COLORS ==========
+
+// ---- MAIN COLORS PALLETE ----
+
+$main-gradient: linear-gradient(90deg, 
+                              #9B7D87, #BA8C84, #C09E92, 
+                              #BFA583, #ADB09A, #A7B9A9, #A3BDB2);
+$gray: #666666;
+$light-gray: #CFCFCF;
+$black: #000000;
+$light-black: #2f2f2f;
+$white: #ffffff;
+$dark-white: #f2f2f2;
+
+$green: #4CAF50;
+$red: #C81E18;
+$red-hover: color.adjust($red, $lightness: 10%);
+
+// ---- TEXT COLORS PALLETE ----
+
+$Text-Black-Headers: #1a1a1a;
+$Text-Black-Texts: #333333;
+$Text-Black-SubTexts: #666666;
+$Text-White-Headers: #ffffff;
+$Text-White-Texts: #f5f5f5;
+$Text-White-SubTexts: #cccccc;
+
+
+
+
+// ========== MEDIA QUERIES ==========
+
+@mixin respond($bp) {
+  @if $bp == xs {
+    @media (max-width: 399px) { @content; }
+  } 
+  @else if $bp == sm {
+    @media (min-width: 400px) and (max-width: 599px) { @content; }
+  } 
+  @else if $bp == md {
+    @media (min-width: 600px) and (max-width: 767px) { @content; }
+  } 
+  @else if $bp == lg {
+    @media (min-width: 768px) and (max-width: 1023px) { @content; }
+  } 
+  @else if $bp == xl {
+    @media (min-width: 1024px) and (max-width: 1279px) { @content; }
+  } 
+  @else if $bp == xxl {
+    @media (min-width: 1280px) and (max-width: 1439px) { @content; }
+  } 
+  @else if $bp == ultra {
+    @media (min-width: 1440px) { @content; }
+  }
+}

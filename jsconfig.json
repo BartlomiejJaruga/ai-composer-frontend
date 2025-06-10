@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@enums": ["src/common/enums.js"],
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@slices/*": ["src/store/slices/*"],
+      "@icons/*": ["src/assets/icons/*"],
+      "@images/*": ["src/assets/images/*"],
+      "@services/*": ["src/services/*"],
+      "@routes/*": ["src/routes/*"],
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

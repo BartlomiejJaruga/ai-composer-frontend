@@ -1,0 +1,51 @@
+.checkbox_container {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox_container label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // font-size: 1rem; <-- Set by inline styles (passed with props)
+    position: relative;
+}
+
+.checkbox_container input[type='checkbox'] {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox_container label::before {
+    content: '';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    padding: 0 0.04em 0.08em 0.04em;
+    background-color: $white;
+    border: 0.075em solid $gray;
+    border-radius: 0.25em;
+    color: $Text-White-Texts;
+    transition: all 0.2s ease;
+}
+
+.checkbox_container label:hover::before,
+.checkbox_container input[type='checkbox']:hover + label::before {
+    box-shadow: 0 0 0.4em $dark-blue;   
+}
+
+.checkbox_container input[type='checkbox']:checked + label::before {
+    content: '\2714';
+    background-color: $dark-blue;
+    border: 0.075em solid $dark-blue;
+}
+
+.checkbox_container input[type='checkbox']:focus + label::before {
+    box-shadow: 0 0 0.4em $gray;
+}
