@@ -13,6 +13,8 @@
   height: 100vh;
   width: 100vw;
 
+  color: $white;
+
   position: relative;
   background: $main-gradient;
   overflow: hidden;
@@ -46,4 +48,5 @@
 #ai_composer_logo_container img {
   max-height: 8rem;
   width: auto;
+  cursor: pointer;
 }

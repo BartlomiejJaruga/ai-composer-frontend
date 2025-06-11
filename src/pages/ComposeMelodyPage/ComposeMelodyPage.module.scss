@@ -1,7 +1,13 @@
-.market_dashboard_container {
+.compose_melody_page_container {
     width: 100%;
     flex-grow: 1;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
+}
+
+.compose_melody_page_container h1 {
+    font-size: 4rem;
+    @include apply-font($font-headings);
 }
