@@ -72,6 +72,7 @@
 
 .single_pros_of_ai_composer_container div:nth-of-type(2) {
     font-size: 1.2rem;
+    @include apply-font($font-general);
 
     @include respond(lg){
         font-size: 1rem;
@@ -85,13 +86,13 @@
         font-size: 0.5rem;
     }
 
-    @include apply-font($font-general);
 }
 
 .speedometer_icon,
 .infinity_icon {
     width: auto;
     height: 3rem;
+    fill: $light-black;
 
     @include respond(lg){
         height: 1.5rem;
@@ -104,13 +105,12 @@
     @include respond(sm){
         height: 0.7rem;
     }
-
-    fill: $light-black;
 }
 
 .music_note_icon {
     width: auto;
     height: 2rem;
+    fill: $light-black;
 
     @include respond(lg){
         height: 1.5rem;
@@ -124,7 +124,7 @@
         height: 0.7rem;
     }
 
-    fill: $light-black;
+    
 }
 
 .speedometer_icon {

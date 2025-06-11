@@ -12,11 +12,15 @@ export default function MelodyBeingComposedPage() {
         navigate('/composeMelody');
     }
     
-    // useEffect(() => {
-    //     setInterval(() => {
-    //         navigate('/audioPlayer');
-    //     }, 30000);
-    // }, []);
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            navigate('/audioPlayer');
+        }, 30000);
+
+        return () => {
+            clearTimeout(timeoutId);
+        }
+    }, []);
 
 
     return (

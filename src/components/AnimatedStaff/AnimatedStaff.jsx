@@ -15,7 +15,7 @@ export default function AnimatedStaff() {
           <circle
             key={i}
             className={`note note-${i}`}
-            cx="0"
+            cx={y + i + y + y}
             cy={y}
             r="5"
             fill="black"

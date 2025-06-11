@@ -2,6 +2,50 @@
     width: 100%;
     flex-grow: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5rem;
+}
+
+.audio_player_page_container h1 {
+    @include apply-font($font-headings);
+
+    font-size: 2.5em;
+}
+
+.audio_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.compose_again_container {
+    height: 3rem;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.compose_again_container span {
+    font-size: 1.5rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: 0.2s text-decoration ease;
+}
+
+.compose_again_icon {
+    width: 2rem;
+    height: auto;
+    transform: scaleX(-1);
+    fill: $white;
+}
+
+.compose_again_container:hover > span {
+    text-decoration: underline;
 }
