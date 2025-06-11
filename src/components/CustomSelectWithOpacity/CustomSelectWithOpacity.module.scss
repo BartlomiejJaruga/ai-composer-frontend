@@ -1,3 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.3em;
+}
+
+.container label {
+    @include apply-font($font-headings);
+}
+
 .select_container {
     position: relative;
 }

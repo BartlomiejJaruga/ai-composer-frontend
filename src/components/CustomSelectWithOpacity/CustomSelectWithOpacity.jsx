@@ -1,19 +1,38 @@
 import styles from "./CustomSelectWithOpacity.module.scss";
 
+import { useId } from "react";
 
 export default function CustomSelectWithOpacity({ 
-    buttonText,
+    labelText,
+    defaultOptionText,
+    selectorName,
     fontSize, 
-    onClickAction,
+    onChangeHandler,
+    data
 }) {
 
+    const uniqueId = useId();
+
     return (
-        <div className={styles.select_container}>
-            <select style={{ fontSize: fontSize }}>
-                <option value="" disabled selected>Wybierz</option>
-                <option value="1">Opcja 1</option>
-                <option value="2">Opcja 2</option>
-            </select>
+        <div className={styles.container} style={{ fontSize: fontSize }}>
+            <label htmlFor={uniqueId}>{labelText}</label>
+            <div className={styles.select_container}>
+                <select 
+                    id={uniqueId} 
+                    name={selectorName} 
+                    onChange={onChangeHandler} 
+                    style={{ fontSize: fontSize }}
+                >
+                    <option value="" disabled selected>{defaultOptionText}</option>
+                    {data.map((dataPiece) => {
+                        return (
+                            <option key={dataPiece} value={dataPiece}>
+                                {dataPiece}
+                            </option>
+                        );
+                    })}
+                </select>
+            </div>
         </div>
     );
 }

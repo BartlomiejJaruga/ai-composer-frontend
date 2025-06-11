@@ -11,3 +11,11 @@
     font-size: 4rem;
     @include apply-font($font-headings);
 }
+
+.melody_setting_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // 2 kolumny
+    grid-template-rows: repeat(3, auto);  // 3 wiersze
+    grid-column-gap: 10vw;
+    grid-row-gap: 5vh;
+}
