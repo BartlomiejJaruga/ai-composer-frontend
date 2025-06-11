@@ -33,7 +33,7 @@ export default function ComposeMelodyPage() {
                         selectorName={"genre"}
                         onChangeHandler={handleFormChange}
                         data={musicGenreData}
-                        fontSize={"2rem"}
+                        fontSize={"1.5rem"}
                     />
                     <CustomSlider />
                     <CustomSelectWithOpacity 
@@ -42,7 +42,7 @@ export default function ComposeMelodyPage() {
                         selectorName={"instrument"}
                         onChangeHandler={handleFormChange}
                         data={instrumentsData}
-                        fontSize={"2rem"}
+                        fontSize={"1.5rem"}
                     />
                     <CustomSlider />
                     <CustomSelectWithOpacity 
@@ -51,11 +51,11 @@ export default function ComposeMelodyPage() {
                         selectorName={"fileType"}
                         onChangeHandler={handleFormChange}
                         data={fileTypeData}
-                        fontSize={"2rem"}
+                        fontSize={"1.5rem"}
                     />
                     
                 </div>
-                <CustomButtonWithOpacity buttonText={"COMPOSE"} fontSize={"2.5rem"} onClickAction={handleComposeButtonClick}/>
+                <CustomButtonWithOpacity buttonText={"COMPOSE"} fontSize={"2rem"} onClickAction={handleComposeButtonClick}/>
             </div>
         </>
     )

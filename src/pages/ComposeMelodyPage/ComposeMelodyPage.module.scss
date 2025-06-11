@@ -8,7 +8,7 @@
 }
 
 .compose_melody_page_container h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     @include apply-font($font-headings);
 }
 
@@ -17,5 +17,5 @@
     grid-template-columns: repeat(2, 1fr); // 2 kolumny
     grid-template-rows: repeat(3, auto);  // 3 wiersze
     grid-column-gap: 10vw;
-    grid-row-gap: 5vh;
+    grid-row-gap: 2rem;
 }

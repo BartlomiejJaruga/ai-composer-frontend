@@ -13,12 +13,12 @@
 }
 
 .welcome_text_container p {
-    font-size: clamp(1rem, 3rem, 3vw);
+    font-size: clamp(1rem, 2rem, 3vw);
 }
 
 .home_page_container h1 {
     @include apply-font($font-headings);
-    font-size: clamp(1rem, 5rem, 5vw);
+    font-size: clamp(1rem, 3rem, 3vw);
 }
 
 
@@ -36,11 +36,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20%;
+    gap: 1rem;
     background-color: $white;
     color: $Text-Black-Texts;
     border-radius: 1em;
-    height: 30vh;
+    height: auto;
     width: 20vw;
     padding: 1em 2em;
     box-shadow: 0.7em 0.7em 0.7em 0.2em rgba(0,0,0, 0.25);
@@ -53,20 +53,77 @@
     background-clip: text;
     color: transparent;
 
-    font-size: 2.5rem;
-    @include apply-font($font-headings);
+    // @include apply-font($font-headings);
+    font-size: 2rem;
+
+    @include respond(lg){
+        font-size: 1.5rem;
+    }
+
+    @include respond(md){
+        font-size: 1rem;
+    }
+
+    @include respond(sm){
+        font-size: 0.7rem;
+    }
+    
 }
 
 .single_pros_of_ai_composer_container div:nth-of-type(2) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+
+    @include respond(lg){
+        font-size: 1rem;
+    }
+
+    @include respond(md){
+        font-size: 0.8rem;
+    }
+
+    @include respond(sm){
+        font-size: 0.5rem;
+    }
+
     @include apply-font($font-general);
 }
 
 .speedometer_icon,
-.infinity_icon,
+.infinity_icon {
+    width: auto;
+    height: 3rem;
+
+    @include respond(lg){
+        height: 1.5rem;
+    }
+
+    @include respond(md){
+        height: 1rem;
+    }
+
+    @include respond(sm){
+        height: 0.7rem;
+    }
+
+    fill: $light-black;
+}
+
 .music_note_icon {
     width: auto;
-    height: 5rem;
+    height: 2rem;
+
+    @include respond(lg){
+        height: 1.5rem;
+    }
+
+    @include respond(md){
+        height: 1rem;
+    }
+
+    @include respond(sm){
+        height: 0.7rem;
+    }
+
     fill: $light-black;
 }
 

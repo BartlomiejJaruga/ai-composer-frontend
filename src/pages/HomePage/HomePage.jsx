@@ -49,7 +49,7 @@ export default function HomePage() {
                     </div>
                 </div>
             </div>
-            <CustomButtonWithOpacity buttonText={"START COMPOSING"} fontSize={"2.5rem"} onClickAction={handleStartComposingButtonClick} />
+            <CustomButtonWithOpacity buttonText={"START COMPOSING"} fontSize={"2rem"} onClickAction={handleStartComposingButtonClick} />
         </div>
     );
 }

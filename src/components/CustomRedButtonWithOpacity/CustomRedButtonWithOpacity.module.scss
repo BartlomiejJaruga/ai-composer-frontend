@@ -1,0 +1,21 @@
+.button_container {
+    display: flex;
+    place-content: center;
+}
+
+.button_container button {
+    background-color: rgba(255, 0, 0, 0.7);
+    @include apply-font($font-headings);
+    color: $Text-White-Texts;
+    border: none;
+    border-radius: 2em;
+    padding: 0.5em 1em;
+    box-shadow: 0.1em 0.1em 0.2em rgba(255,255,255, 0.7) inset,
+                -0.1em -0.1em 0.2em rgba(0,0,0, 0.6) inset;
+    cursor: pointer;
+    transition: 0.2s background-color ease;
+}
+
+.button_container button:hover {
+    background-color: rgba(255, 0, 0, 0.4);
+}

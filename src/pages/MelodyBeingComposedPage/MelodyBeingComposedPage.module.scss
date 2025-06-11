@@ -1,7 +1,15 @@
-.market_history_dashboard_container {
+.melody_being_composed_page_container {
     width: 100%;
-    flex-grow: 1;
+    // flex-grow: 1;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+}
+
+.user_information_container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    margin: 2rem 0;
 }
