@@ -4,7 +4,7 @@ import CustomButtonWithOpacity from "@components/CustomButtonWithOpacity/CustomB
 import { useNavigate } from "react-router-dom";
 import Speedometer from "@icons/speedometer.svg?react";
 import Infinity from "@icons/infinity.svg?react";
-import MusicNote from "@icons/music-note.svg?react";
+import MusicNote from "@icons/double-music-note.svg?react";
 
 export default function HomePage() {
     const navigate = useNavigate();
