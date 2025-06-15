@@ -20,10 +20,11 @@ export default function CustomSelectWithOpacity({
                 <select 
                     id={uniqueId} 
                     name={selectorName} 
+                    defaultValue={defaultOptionText}
                     onChange={onChangeHandler} 
                     style={{ fontSize: fontSize }}
                 >
-                    <option value="" disabled selected>{defaultOptionText}</option>
+                    <option value={defaultOptionText} disabled>{defaultOptionText}</option>
                     {data.map((dataPiece) => {
                         return (
                             <option key={dataPiece} value={dataPiece}>
@@ -32,6 +33,7 @@ export default function CustomSelectWithOpacity({
                         );
                     })}
                 </select>
+                <span className={styles.custom_arrow} />
             </div>
         </div>
     );

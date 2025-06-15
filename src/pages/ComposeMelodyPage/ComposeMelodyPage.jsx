@@ -9,13 +9,22 @@ import CustomSlider from "@components/CustomSlider/CustomSlider";
 
 export default function ComposeMelodyPage() {
     const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        genre: "",
+        instrument: "",
+        fileType: "",
+        sequenceQuantity: 50,
+        melodyDiversity: 50,
+    });
 
     const handleComposeButtonClick = () => {
         navigate("/melodyBeingComposed");
     }
 
     const handleFormChange = (e) => {
-        console.log(e.target);
+        const { name, value } = e.target;
+
+        setFormData((prev) => ({ ...prev, [name]: value}));
     }
 
     const instrumentsData = ["Trumpet", "Piano", "Guitar"];
@@ -35,7 +44,18 @@ export default function ComposeMelodyPage() {
                         data={musicGenreData}
                         fontSize={"1.5rem"}
                     />
-                    <CustomSlider />
+                    <CustomSlider 
+                        labelText={"Sequence Quantity"}
+                        sliderName={"sequenceQuantity"}
+                        minText={"Low"}
+                        maxText={"High"}
+                        minValue={0}
+                        maxValue={100}
+                        value={formData.sequenceQuantity}
+                        stepValue={1}
+                        fontSize={"1.5rem"}
+                        onChangeAction={handleFormChange}
+                    />
                     <CustomSelectWithOpacity 
                         labelText={"Main Instrument:"} 
                         defaultOptionText={"Select Instrument"}
@@ -44,7 +64,18 @@ export default function ComposeMelodyPage() {
                         data={instrumentsData}
                         fontSize={"1.5rem"}
                     />
-                    <CustomSlider />
+                    <CustomSlider 
+                        labelText={"Melody Diversity"}
+                        sliderName={"melodyDiversity"}
+                        minText={"Small"}
+                        maxText={"Big"}
+                        minValue={0}
+                        maxValue={100}
+                        value={formData.melodyDiversity}
+                        stepValue={1}
+                        fontSize={"1.5rem"}
+                        onChangeAction={handleFormChange}
+                    />
                     <CustomSelectWithOpacity 
                         labelText={"File Type:"} 
                         defaultOptionText={"Select File Type"}

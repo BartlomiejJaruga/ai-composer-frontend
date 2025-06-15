@@ -15,6 +15,41 @@
 }
 
 .select_container select {
-    padding: 0.5em;
-    // appearance: none;
+    padding: 0.5em 3em 0.5em 0.5em;
+    appearance: none;
+    border: 0.1em $white solid;
+    border-radius: 0.2em;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: $Text-White-Texts;
 }
+
+.custom_arrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 2.5em;
+    // background-color: $red;
+    pointer-events: none;
+
+    &::before {
+        content: "";
+        --size: 0.5em;
+        position: absolute;
+        width: 0;
+        height: 0;
+        
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+
+        border-left: var(--size) solid transparent;
+        border-right: var(--size) solid transparent;
+        border-top: var(--size) solid $white;
+    }
+}
+
+.select_container select option {
+    color: $Text-Black-Texts;
+}
+

@@ -1,0 +1,38 @@
+.slider_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+    @include apply-font($font-headings);
+}
+
+.slider_range_labels_container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
+
+    & span {
+        font-size: 0.75em;
+    }
+}
+
+.slider_container input[type='range'] {
+    appearance: none;
+    background-color: $white;
+    height: 0.1em;
+    width: 88%;
+    font-size: inherit;
+
+    &::-webkit-slider-thumb {
+        appearance: none;
+        width: 0.65em;
+        height: 0.65em;
+        background-color: $white;
+        color: $white;
+        border: 0;
+        border-radius: 1em;
+    }
+}
