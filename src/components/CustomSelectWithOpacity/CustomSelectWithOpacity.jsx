@@ -5,6 +5,7 @@ import { useId } from "react";
 export default function CustomSelectWithOpacity({ 
     labelText,
     defaultOptionText,
+    defaultValue,
     selectorName,
     fontSize, 
     onChangeHandler,
@@ -22,13 +23,13 @@ export default function CustomSelectWithOpacity({
                 <select 
                     id={uniqueId} 
                     name={selectorName} 
-                    defaultValue={defaultOptionText}
+                    defaultValue={defaultValue}
                     onChange={onChangeHandler} 
                     onBlur={onBlurHandler}
                     style={{ fontSize: fontSize }}
                     className={!isError ? styles.select_default_style : styles.select_error_style}
                 >
-                    <option value={defaultOptionText} disabled>{defaultOptionText}</option>
+                    <option value="" disabled>{defaultOptionText}</option>
                     {data.map((dataPiece) => {
                         return (
                             <option key={dataPiece} value={dataPiece}>

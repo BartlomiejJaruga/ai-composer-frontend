@@ -4,16 +4,21 @@ import AnimatedStaff from "@components/AnimatedStaff/AnimatedStaff";
 import CustomRedButtonWithOpacity from "@components/CustomRedButtonWithOpacity/CustomRedButtonWithOpacity";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { stopComposing } from "@slices/composerSlice";
 
 export default function MelodyBeingComposedPage() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleStopComposingButtonClick = () => {
+        dispatch(stopComposing());
         navigate('/composeMelody');
     }
     
     useEffect(() => {
         const timeoutId = setTimeout(() => {
+            dispatch(stopComposing());
             navigate('/audioPlayer');
         }, 10000);
 

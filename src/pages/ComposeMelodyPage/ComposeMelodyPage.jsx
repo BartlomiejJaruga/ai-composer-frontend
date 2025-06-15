@@ -6,15 +6,19 @@ import CustomButtonWithOpacity from "@components/CustomButtonWithOpacity/CustomB
 import { useNavigate } from "react-router-dom";
 import CustomSelectWithOpacity from "@components/CustomSelectWithOpacity/CustomSelectWithOpacity";
 import CustomSlider from "@components/CustomSlider/CustomSlider";
+import { useDispatch, useSelector } from "react-redux";
+import { startComposing } from "@slices/composerSlice";
 
 export default function ComposeMelodyPage() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const lastSettings = useSelector((state) => state.composer.lastComposeSettings);
     const [formData, setFormData] = useState({
-        genre: "",
-        instrument: "",
-        fileType: "",
-        sequenceQuantity: 50,
-        melodyDiversity: 50,
+        genre: lastSettings.genre,
+        instrument: lastSettings.instrument,
+        fileType: lastSettings.fileType,
+        sequenceQuantity: lastSettings.sequenceQuantity,
+        melodyDiversity: lastSettings.melodyDiversity,
     });
     const [formErrors, setFormErrors] = useState({
         genreError: null,
@@ -76,7 +80,8 @@ export default function ComposeMelodyPage() {
         if(!isFormCompleted()){
             return;
         }
-
+        
+        dispatch(startComposing(formData));
         navigate("/melodyBeingComposed");
     }
 
@@ -96,6 +101,7 @@ export default function ComposeMelodyPage() {
                     <CustomSelectWithOpacity 
                         labelText={"Music Genre:"} 
                         defaultOptionText={"Select Genre"}
+                        defaultValue={formData.genre}
                         selectorName={"genre"}
                         onChangeHandler={handleFormChange}
                         onBlurHandler={isGenreCompleted}
@@ -103,7 +109,6 @@ export default function ComposeMelodyPage() {
                         fontSize={"1.5rem"}
                         isError={formErrors.genreError === null ? false : true}
                     />
-                    
                     <CustomSlider 
                         labelText={"Sequence Quantity"}
                         sliderName={"sequenceQuantity"}
@@ -119,6 +124,7 @@ export default function ComposeMelodyPage() {
                     <CustomSelectWithOpacity 
                         labelText={"Main Instrument:"} 
                         defaultOptionText={"Select Instrument"}
+                        defaultValue={formData.instrument}
                         selectorName={"instrument"}
                         onChangeHandler={handleFormChange}
                         onBlurHandler={isInstrumentCompleted}
@@ -141,6 +147,7 @@ export default function ComposeMelodyPage() {
                     <CustomSelectWithOpacity 
                         labelText={"File Type:"} 
                         defaultOptionText={"Select File Type"}
+                        defaultValue={formData.fileType}
                         selectorName={"fileType"}
                         onChangeHandler={handleFormChange}
                         onBlurHandler={isFileTypeCompleted}
