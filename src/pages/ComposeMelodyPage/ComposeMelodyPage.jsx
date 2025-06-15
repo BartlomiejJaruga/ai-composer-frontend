@@ -16,16 +16,59 @@ export default function ComposeMelodyPage() {
         sequenceQuantity: 50,
         melodyDiversity: 50,
     });
-
-    const handleComposeButtonClick = () => {
-        navigate("/melodyBeingComposed");
-    }
+    const [formErrors, setFormErrors] = useState({
+        genreError: null,
+        instrumentError: null,
+        fileTypeError: null,
+    });
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
 
         setFormData((prev) => ({ ...prev, [name]: value}));
     }
+
+    const isFormCompleted = () => {
+        let isFormFullyCompleted = true;
+
+        if(formData.genre === ""){
+            setFormErrors((prev) => ({ ...prev, genreError: "Music Genre needs to be set!" }));
+            isFormFullyCompleted = false;
+        }
+        else{
+            setFormErrors((prev) => ({ ...prev, genreError: null }));
+        }
+
+        if(formData.instrument === ""){
+            setFormErrors((prev) => ({ ...prev, instrumentError: "Main Instrument needs to be set!" }));
+            isFormFullyCompleted = false;
+        }
+        else{
+            setFormErrors((prev) => ({ ...prev, instrumentError: null }));
+        }
+
+        if(formData.fileType === ""){
+            setFormErrors((prev) => ({ ...prev, fileTypeError: "File Type needs to be set!" }));
+            isFormFullyCompleted = false;
+        }
+        else{
+            setFormErrors((prev) => ({ ...prev, fileTypeError: null }));
+        }
+
+        return isFormFullyCompleted;
+    }
+
+    const handleComposeButtonClick = () => {
+        if(!isFormCompleted()){
+            return;
+        }
+
+        navigate("/melodyBeingComposed");
+    }
+
+
+
+
 
     const instrumentsData = ["Trumpet", "Piano", "Guitar"];
     const musicGenreData = ["Pop", "Country", "Rock", "Experimental"];
@@ -43,7 +86,9 @@ export default function ComposeMelodyPage() {
                         onChangeHandler={handleFormChange}
                         data={musicGenreData}
                         fontSize={"1.5rem"}
+                        isError={formErrors.genreError === null ? false : true}
                     />
+                    
                     <CustomSlider 
                         labelText={"Sequence Quantity"}
                         sliderName={"sequenceQuantity"}
@@ -63,6 +108,7 @@ export default function ComposeMelodyPage() {
                         onChangeHandler={handleFormChange}
                         data={instrumentsData}
                         fontSize={"1.5rem"}
+                        isError={formErrors.instrumentError === null ? false : true}
                     />
                     <CustomSlider 
                         labelText={"Melody Diversity"}
@@ -83,6 +129,7 @@ export default function ComposeMelodyPage() {
                         onChangeHandler={handleFormChange}
                         data={fileTypeData}
                         fontSize={"1.5rem"}
+                        isError={formErrors.fileTypeError === null ? false : true}
                     />
                     
                 </div>

@@ -8,7 +8,8 @@ export default function CustomSelectWithOpacity({
     selectorName,
     fontSize, 
     onChangeHandler,
-    data
+    data,
+    isError,
 }) {
 
     const uniqueId = useId();
@@ -23,6 +24,7 @@ export default function CustomSelectWithOpacity({
                     defaultValue={defaultOptionText}
                     onChange={onChangeHandler} 
                     style={{ fontSize: fontSize }}
+                    className={!isError ? styles.select_default_style : styles.select_error_style}
                 >
                     <option value={defaultOptionText} disabled>{defaultOptionText}</option>
                     {data.map((dataPiece) => {
