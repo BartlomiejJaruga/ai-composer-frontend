@@ -8,6 +8,7 @@ export default function CustomSelectWithOpacity({
     selectorName,
     fontSize, 
     onChangeHandler,
+    onBlurHandler,
     data,
     isError,
 }) {
@@ -23,6 +24,7 @@ export default function CustomSelectWithOpacity({
                     name={selectorName} 
                     defaultValue={defaultOptionText}
                     onChange={onChangeHandler} 
+                    onBlur={onBlurHandler}
                     style={{ fontSize: fontSize }}
                     className={!isError ? styles.select_default_style : styles.select_error_style}
                 >

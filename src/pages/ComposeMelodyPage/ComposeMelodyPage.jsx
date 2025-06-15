@@ -28,35 +28,49 @@ export default function ComposeMelodyPage() {
         setFormData((prev) => ({ ...prev, [name]: value}));
     }
 
+
+
+    const isGenreCompleted = () => {
+        if(formData.genre === ""){
+            setFormErrors((prev) => ({ ...prev, genreError: "Music Genre needs to be set!" }));
+            return false;
+        }
+
+        setFormErrors((prev) => ({ ...prev, genreError: null }));
+        return true;
+    }
+
+    const isInstrumentCompleted = () => {
+        if(formData.instrument === ""){
+            setFormErrors((prev) => ({ ...prev, instrumentError: "Main Instrument needs to be set!" }));
+            return false;
+        }
+        
+        setFormErrors((prev) => ({ ...prev, instrumentError: null }));
+        return true;
+    }
+
+    const isFileTypeCompleted = () => {
+        if(formData.fileType === ""){
+            setFormErrors((prev) => ({ ...prev, fileTypeError: "File Type needs to be set!" }));
+            return false;
+        }
+        
+        setFormErrors((prev) => ({ ...prev, fileTypeError: null }));
+        return true;
+    }
+
     const isFormCompleted = () => {
         let isFormFullyCompleted = true;
 
-        if(formData.genre === ""){
-            setFormErrors((prev) => ({ ...prev, genreError: "Music Genre needs to be set!" }));
-            isFormFullyCompleted = false;
-        }
-        else{
-            setFormErrors((prev) => ({ ...prev, genreError: null }));
-        }
-
-        if(formData.instrument === ""){
-            setFormErrors((prev) => ({ ...prev, instrumentError: "Main Instrument needs to be set!" }));
-            isFormFullyCompleted = false;
-        }
-        else{
-            setFormErrors((prev) => ({ ...prev, instrumentError: null }));
-        }
-
-        if(formData.fileType === ""){
-            setFormErrors((prev) => ({ ...prev, fileTypeError: "File Type needs to be set!" }));
-            isFormFullyCompleted = false;
-        }
-        else{
-            setFormErrors((prev) => ({ ...prev, fileTypeError: null }));
-        }
+        if(!isGenreCompleted()) isFormFullyCompleted = false;
+        if(!isInstrumentCompleted()) isFormFullyCompleted = false;
+        if(!isFileTypeCompleted()) isFormFullyCompleted = false;
 
         return isFormFullyCompleted;
     }
+
+
 
     const handleComposeButtonClick = () => {
         if(!isFormCompleted()){
@@ -84,6 +98,7 @@ export default function ComposeMelodyPage() {
                         defaultOptionText={"Select Genre"}
                         selectorName={"genre"}
                         onChangeHandler={handleFormChange}
+                        onBlurHandler={isGenreCompleted}
                         data={musicGenreData}
                         fontSize={"1.5rem"}
                         isError={formErrors.genreError === null ? false : true}
@@ -106,6 +121,7 @@ export default function ComposeMelodyPage() {
                         defaultOptionText={"Select Instrument"}
                         selectorName={"instrument"}
                         onChangeHandler={handleFormChange}
+                        onBlurHandler={isInstrumentCompleted}
                         data={instrumentsData}
                         fontSize={"1.5rem"}
                         isError={formErrors.instrumentError === null ? false : true}
@@ -127,6 +143,7 @@ export default function ComposeMelodyPage() {
                         defaultOptionText={"Select File Type"}
                         selectorName={"fileType"}
                         onChangeHandler={handleFormChange}
+                        onBlurHandler={isFileTypeCompleted}
                         data={fileTypeData}
                         fontSize={"1.5rem"}
                         isError={formErrors.fileTypeError === null ? false : true}
