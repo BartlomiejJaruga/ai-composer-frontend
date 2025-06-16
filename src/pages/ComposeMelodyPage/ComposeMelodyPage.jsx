@@ -1,13 +1,12 @@
 import styles from "./ComposeMelodyPage.module.scss";
 
-import { useEffect, useState } from "react";
-import axiosInstance from "@services/axiosInstance";
+import { useState } from "react";
 import CustomButtonWithOpacity from "@components/CustomButtonWithOpacity/CustomButtonWithOpacity";
 import { useNavigate } from "react-router-dom";
 import CustomSelectWithOpacity from "@components/CustomSelectWithOpacity/CustomSelectWithOpacity";
 import CustomSlider from "@components/CustomSlider/CustomSlider";
 import { useDispatch, useSelector } from "react-redux";
-import { startComposing } from "@slices/composerSlice";
+import { startComposing, setLastComposeSettings } from "@slices/composerSlice";
 
 export default function ComposeMelodyPage() {
     const navigate = useNavigate();
@@ -74,24 +73,23 @@ export default function ComposeMelodyPage() {
         return isFormFullyCompleted;
     }
 
-
-
     const handleComposeButtonClick = () => {
         if(!isFormCompleted()){
             return;
         }
         
-        dispatch(startComposing(formData));
+        dispatch(setLastComposeSettings(formData));
+        dispatch(startComposing());
         navigate("/melodyBeingComposed");
     }
-
-
-
-
+    
+    
 
     const instrumentsData = ["Trumpet", "Piano", "Guitar"];
     const musicGenreData = ["Pop", "Country", "Rock", "Experimental"];
     const fileTypeData = ["MP3", "MIDI", "WAV"];
+    
+
 
     return (
         <>

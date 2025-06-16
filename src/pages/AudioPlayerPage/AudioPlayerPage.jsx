@@ -1,17 +1,19 @@
 import styles from "./AudioPlayerPage.module.scss";
 
-import mp3_example from "../../assets/mp3_example.mp3";
 import CustomButtonWithOpacity from "@components/CustomButtonWithOpacity/CustomButtonWithOpacity";
 import RepeatIcon from "@icons/repeat.svg?react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function AudioPlayerPage() {
     const navigate = useNavigate();
-    const fileName = "pop_spicy_bubblegum_vibefreak_3234.mp3";
+    const melodyURL = useSelector((state) => state.composer.generatedMelodyURL);
+    const fileName = useSelector((state) => state.composer.generatedMelodyName);
+    const fileType = useSelector((state) => state.composer.lastComposeSettings.fileType);
 
     const handleDownload = () => {
         const link = document.createElement("a");
-        link.href = mp3_example;
+        link.href = melodyURL;
         link.download = fileName;
         document.body.appendChild(link);
         link.click();
@@ -19,9 +21,14 @@ export default function AudioPlayerPage() {
     };
 
     const handleComposeAgainClick = () => {
+        if(melodyURL){
+            URL.revokeObjectURL(melodyURL);
+        }
         navigate('/composeMelody');
     }
-    
+
+
+
     return (
         <>
             <div className={styles.audio_player_page_container}>
@@ -30,9 +37,18 @@ export default function AudioPlayerPage() {
                 <div className={styles.audio_container}>
                     <h2>{fileName}</h2>
                     <audio controls>
-                        <source src={mp3_example} type="audio/mpeg" />
-                        Twoja przeglądarka nie obsługuje elementu audio.
+                        <source 
+                            src={melodyURL} 
+                            type="audio/mpeg"
+                        />
+                        If you can see this, then your browser doesn't support audio files.
                     </audio>
+                    {fileType === "MIDI" && (
+                        <p>
+                            Website can't play .mid files!<br/>
+                            Download file to be able to listen to it.
+                        </p>
+                    )}
                 </div>
 
                 <CustomButtonWithOpacity buttonText={"DOWNLOAD"} fontSize={"1.7rem"} onClickAction={handleDownload}/>
