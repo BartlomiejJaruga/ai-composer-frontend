@@ -1,0 +1,42 @@
+.something_went_wrong_page_container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    gap: 10vh;
+}
+
+.something_went_wrong_page_container h1 {
+    @include apply-font($font-headings);
+}
+
+.something_went_wrong_page_container img {
+    max-height: 20vh;
+    width: auto;
+}
+
+.go_back_button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    transition: border-bottom 0.2s ease;
+
+    font-size: 1.5rem;
+    @include apply-font($font-headings);
+}
+
+.go_back_button_container:hover {
+    border-bottom: solid 0.1em $white;
+}
+
+.arrow_icon {
+    width: auto;
+    height: 1.3rem;
+    fill: $white;
+}

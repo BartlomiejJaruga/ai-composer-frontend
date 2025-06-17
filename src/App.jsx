@@ -7,6 +7,7 @@ import MelodyBeingComposedPage from '@pages/MelodyBeingComposedPage/MelodyBeingC
 import AudioPlayerPage from '@pages/AudioPlayerPage/AudioPlayerPage'
 import NotFoundPage from '@pages/NotFoundPage/NotFoundPage'
 import { useNavigate } from 'react-router-dom'
+import SomethingWentWrongPage from '@pages/SomethingWentWrongPage/SomethingWentWrongPage'
 
 function App() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function App() {
         <Route path='/composeMelody' element={<ComposeMelodyPage/>} />
         <Route path='/melodyBeingComposed' element={<MelodyBeingComposedPage/>} />
         <Route path='/audioPlayer' element={<AudioPlayerPage/>} />
+        <Route path='/somethingWentWrong' element={<SomethingWentWrongPage />} />
         <Route path='*' element={<NotFoundPage/>} />
       </Routes>
     </div>

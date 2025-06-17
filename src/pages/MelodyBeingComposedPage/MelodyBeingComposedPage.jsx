@@ -48,7 +48,7 @@ export default function MelodyBeingComposedPage() {
         catch (error) {
             console.error('Error while generating music:', error);
             dispatch(stopComposing());
-            navigate('/not_exists');
+            navigate('/somethingWentWrong');
         }
     }
 
